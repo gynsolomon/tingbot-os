@@ -5,7 +5,7 @@ BASE_IMG_URL := http://downloads.raspberrypi.org/raspbian_lite/images/raspbian_l
 BASE_IMG_NAME := $(basename $(notdir $(BASE_IMG_URL))).img
 
 SPRINGBOARD := build/root/usr/share/tingbot/springboard.tingapp
-SPRINGBOARD_COMMIT := v1.2.0
+SPRINGBOARD_COMMIT := v1.2.0.1
 SPRINGBOARD_TARBALL := dl/springboard-$(SPRINGBOARD_COMMIT).tgz
 
 build/tingbot-os.deb: build/root
@@ -31,7 +31,7 @@ build/root: $(SPRINGBOARD_TARBALL) $(shell find root ! -lname "*")
 $(SPRINGBOARD_TARBALL):
 	# download springboard
 	mkdir -p dl
-	curl -L http://github.com/tingbot/springboard/tarball/$(SPRINGBOARD_COMMIT) -o $(SPRINGBOARD_TARBALL)
+	curl -L https://github.com/gynsolomon/springboard/tarball/$(SPRINGBOARD_COMMIT) -o $(SPRINGBOARD_TARBALL)
 
 build/disk.img: dl/$(BASE_IMG_NAME) build/tingbot-os.deb vm-setup.expect vm-build.expect vm-cleanup.expect
 	mkdir -p build
