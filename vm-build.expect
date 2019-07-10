@@ -10,7 +10,7 @@ spawn qemu-system-arm \
     -no-reboot \
     -nographic \
     -append "root=/dev/sda2 panic=1 rootfstype=ext4 rw console=ttyAMA0" \
-    -redir tcp:2222::22 \
+    -nic user,hostfwd=tcp::2222-:22 \
     -hda build/disk.img 
 
 expect "raspberrypi login: "

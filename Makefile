@@ -1,8 +1,9 @@
 .PHONY: build-img build-deb install build clean
 .DELETE_ON_ERROR:
 
-BASE_IMG_URL := http://downloads.raspberrypi.org/raspbian_lite/images/raspbian_lite-2016-03-18/2016-03-18-raspbian-jessie-lite.zip
-BASE_IMG_NAME := $(basename $(notdir $(BASE_IMG_URL))).img
+#BASE_IMG_URL := http://downloads.raspberrypi.org/raspbian_lite/images/raspbian_lite-2016-03-18/2016-03-18-raspbian-jessie-lite.zip
+#BASE_IMG_NAME := $(basename $(notdir $(BASE_IMG_URL))).img
+BASE_IMG_NAME := 2017-07-05-raspbian-jessie.img
 
 SPRINGBOARD := build/root/usr/share/tingbot/springboard.tingapp
 SPRINGBOARD_COMMIT := v1.2.0.1
@@ -63,6 +64,6 @@ clean:
 
 dl/$(BASE_IMG_NAME):
 	mkdir -p dl
-	curl --location -o dl/$(BASE_IMG_NAME).zip $(BASE_IMG_URL)
+	#curl --location -o dl/$(BASE_IMG_NAME).zip $(BASE_IMG_URL)
 	unzip dl/$(BASE_IMG_NAME).zip -d dl/zipfile
 	mv dl/zipfile/*.img dl/$(BASE_IMG_NAME)

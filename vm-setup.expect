@@ -34,6 +34,24 @@ send "echo 'proc            /proc           proc    defaults          0       0'
 expect "# "
 send "sync\r"
 
+expect "#"
+send "mv /etc/apt/sources.list /etc/apt/sources.list.bak\r"
+
+expect "#"
+send "touch /etc/apt/sources.list\r"
+
+expect "#"
+send "echo 'deb http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ jessie main non-free contrib' > /etc/apt/sources.list\r"
+
+expect "#"
+send "mv /etc/apt/sources.list.d/raspi.list /etc/apt/sources.list.d/raspi.list.bak\r"
+
+expect "#"
+send "touch /etc/apt/sources.list.d/raspi.list\r"
+
+expect "#"
+send "echo 'deb http://mirrors.tuna.tsinghua.edu.cn/raspberrypi/ jessie main' > /etc/apt/sources.list.d/raspi.list\r"
+
 # reboot
 expect "# "
 send "\x04"

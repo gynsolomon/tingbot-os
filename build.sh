@@ -3,6 +3,9 @@
 set -x
 set -o errexit
 
+sudo pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pip -U
+sudo pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+
 sudo apt-get -y update
 sudo apt-get -y install gdebi-core
 
